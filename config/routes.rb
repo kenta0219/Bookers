@@ -1,21 +1,25 @@
 Rails.application.routes.draw do
-  get 'books/new' 
+  
+  devise_for :users
+
+  resources :books
 
   get '/top' => 'books#top'
 
-  get 'books' => 'books#index'
+  get 'books/new'
 
-  get 'books/:id' => 'books#show', as: 'book'
+  root 'books#index'
 
-  post 'books' => 'books#create'
+  get 'users/:id' => 'users#show'
 
-  get 'books/:id/edit' => 'books#edit', as: 'edit_book'
+  get '/about' => 'books#about'
 
-  patch 'books/:id' => 'books#update',as: 'update_book'
+  resources :users, only: [:index,:show,:edit,:update]
 
-  delete 'books/:id' => 'books#destroy',as: 'destroy_book'
 
- 
+  end
+
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end

@@ -1,10 +1,33 @@
-<h1>新規投稿</h1>
-<%= form_for(@book) do |f| %>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
+			<%= render 'books/list', books: @books, book: @book, user: current_user %>
+		</div>
 	
-	<p>タイトル</p>
-	<%= f.text_field :title %>
-	
-	<p>本文</p>
-	<%= f.text_area :body %>
-	<%= f.submit '投稿' %>
-<% end %>
+			
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-9">
+								<h2>Books</h2>
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th></th>
+											<th>Title</th>
+											<th>Opinion</th>
+										</tr>
+									</thead>
+									<tbody>
+										
+											<tr>
+												<td><%= attachment_image_tag current_user,:profile_image,class: "img-responsive pull-left profile-thumb", size:'60x60'%></td>
+												<td><%= current_user.name %></td>
+												<td><%= current_user.introduction %></td>
+											</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+	</div>
+</div>
