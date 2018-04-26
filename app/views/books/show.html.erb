@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+		<div class="col-lg-3">
+			<%= render 'list', books: @books, book: @book, user: @book.user %>
+		</div>
+
+		<div class="col-lg-9">
+			<table class="table table-striped">
+
+				<h2>Book detail</h2>
+				<tr>
+					<td><%= attachment_image_tag @book.user,:profile_image,class: "img-responsive pull-left profile-thumb", fallback:"no_image.jpg",size: '60x60'%></td>
+
+					<td><%= @book.title %></td>
+					<td><%= @book.body %></td>
+					<td><%= link_to 'Edit',edit_book_path(@book), class:"btn btn-success" %></td>
+					<td><%= link_to 'Destroy',book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?", class:"btn btn-danger"%>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
