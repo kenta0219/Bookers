@@ -14,9 +14,10 @@ Rails.application.routes.draw do
 
   get '/about' => 'books#about'
 
+
   resources :users, only: [:index,:show,:edit,:update]
 
-
+  resources :session
   end
 
 

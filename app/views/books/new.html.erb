@@ -3,13 +3,12 @@
 		<div class="col-lg-3">
 			<%= render 'books/list', books: @books, book: @book, user: current_user %>
 		</div>
-	
 			
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-9">
-								<h2>Books</h2>
 								<table class="table table-striped">
+									<h2>Books</h2>
 									<thead>
 										<tr>
 											<th></th>
@@ -18,12 +17,14 @@
 										</tr>
 									</thead>
 									<tbody>
-										
+											
 											<tr>
 												<td><%= attachment_image_tag current_user,:profile_image,class: "img-responsive pull-left profile-thumb", size:'60x60'%></td>
-												<td><%= current_user.name %></td>
-												<td><%= current_user.introduction %></td>
+												<td><%= @book.title%></td>
+												<td><%= @book.body %></td>
+
 											</tr>
+											
 									</tbody>
 								</table>
 							</div>
