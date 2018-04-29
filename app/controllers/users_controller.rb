@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@book = Book.new
-    @books = @user.books
+    @books = Book.all
   end
 
   def edit
@@ -35,8 +35,9 @@ class UsersController < ApplicationController
 
   def update
 		user = User.find(params[:id])
-  		user.update(user_params)
-    if @user.update_attributes(user_params)
+  		# user.update(user_params)
+    # if @user.update_attributes(user_params)
+    if user.update(user_params)
       flash[:success] = "ユーザー登録情報更新"
       redirect_to user_path(user.id)
     else

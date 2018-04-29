@@ -19,14 +19,15 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @books = Book.all
   end
 
   def create
       book = Book.new(book_params)
       book.user_id = current_user.id
-      binding.pry
+      # binding.pry
       book.save
-      redirect_to books_path
+      redirect_to books_new_path
   end
 
   def about

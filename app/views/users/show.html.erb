@@ -17,11 +17,13 @@
 			 		</thead>
 			 		<tbody>
 			 				<% @books.each do |book| %>
+			 				<% if current_user.id == book.user_id %>
 			 				<tr>
 			 					<td><%= attachment_image_tag @book.user,:profile_image,class: "img-responsive pull-left profile-thumb", fallback:"no_image.jpg",size: '60x60'%></td>
 				 				<td><%= book.title %></td>
 				 				<td><%= book.body %></td>
 				 			</tr>
+			 				<% end %>
 			 				<% end %>
 			 			</tr>
 			 		</tbody>

@@ -17,12 +17,15 @@
 										</tr>
 									</thead>
 									<tbody>
-											
-											<tr>
-												<td><%= attachment_image_tag current_user,:profile_image,class: "img-responsive pull-left profile-thumb", size:'60x60'%></td>
-												<td><%= @book.title%></td>
-												<td><%= @book.body %></td>
-
+												<% @books.each do |book| %>
+												<% if current_user.id == book.user_id %>
+													<tr>
+														<td><%= attachment_image_tag current_user,:profile_image,class: "img-responsive pull-left profile-thumb", size:'60x60'%></td>
+														<td><%= link_to book.title,book_path(book.id)%></td>
+														<td><%= book.body %></td>
+													</tr>
+												<% end %>
+												<% end %>
 											</tr>
 											
 									</tbody>
