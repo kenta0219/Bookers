@@ -3,7 +3,6 @@
   <html>
     <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
 
         <title>Bookers</title>
         <%= csrf_meta_tags %>
@@ -13,13 +12,12 @@
     <body>
       <header style="background-color: black; color:white;">
       	<div class="container">
-          
               <h3><span class="glyphicon glyphicon-book" aria-hidden="true">Bookers</span></h3>
           </div>
 
               <div class="aikon text-right" style="color:#9d9d9d;">
                 <% if user_signed_in? %>
-                  <%= link_to books_new_path do%>                
+                  <%= link_to books_new_path do%>
                    <i class="glyphicon glyphicon-home">
                      Home
                    </i>

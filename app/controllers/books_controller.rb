@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def top
     if user_signed_in?
-      redirect_to books_path
+      redirect_to books_new_path
     end
   end
 
