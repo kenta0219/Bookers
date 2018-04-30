@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # resources :session
    get '/top' => 'books#top'
    get 'books/new'
-   root 'books#index'
+   root 'books#top'
    get 'users/:id' => 'users#show'
    get '/about' => 'books#about'
   

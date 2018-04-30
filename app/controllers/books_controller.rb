@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:top, :about]
 
   def top
     if user_signed_in?
@@ -55,7 +55,10 @@ class BooksController < ApplicationController
   def destroy
       book = Book.find(params[:id])
       book.destroy
-      redirect_to books_path
+    if book.destroy
+       flash[:success] = "削除完了"
+      redirect_to books_new_path
+    end
   end
 
   private
