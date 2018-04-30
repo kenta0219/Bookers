@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, except: [:top,:about]
+  before_action :authenticate_user!
 
   def top
     if user_signed_in?
@@ -13,7 +13,11 @@ class BooksController < ApplicationController
   end
 
   def show
+    if Book.exists?(id: params[:id])
       @book = Book.find(params[:id])
+    else
+      redirect_to root_path
+    end
       @book1 = Book.new
   end
 
@@ -40,7 +44,12 @@ class BooksController < ApplicationController
   def update
       book = Book.find(params[:id])
       book.update(book_params)
-      redirect_to books_path(book.id)
+    if book.update(book_params)
+       flash[:success] = "編集完了"
+       redirect_to books_new_path(book.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

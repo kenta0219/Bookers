@@ -13,10 +13,10 @@
 
 					<td><%= @book.title %></td>
 					<td><%= @book.body %></td>
-					
-					</td>
+					<td><%= link_to 'Edit',edit_book_path ,class:"btn-sm btn-success"%></td>
+					<td><%= link_to 'Destroy', book_path(@book), method: :delete, class: "btn-sm btn-danger"%></td>
 				</tr>
 			</table>
 		</div>
 	</div>
-</div>
+</div

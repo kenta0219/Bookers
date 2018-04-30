@@ -17,14 +17,15 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
+
   end
 
   def create
   	@user = User.new(user_params)
      user_id = current_user.id
     if @user.save
-    	flash[:notice] = "あああ"
-      redirect_to @user
+    	flash[:success] = "投稿完了"
+      redirect_to books_new_path
     else
       render :new
     end
@@ -38,8 +39,9 @@ class UsersController < ApplicationController
     # if @user.update_attributes(user_params)
     if user.update(user_params)
       flash[:success] = "ユーザー登録情報更新"
-      redirect_to user_path(user.id)
+      redirect_to books_new_path(user.id)
     else
+      flash[:danger] = "Error"
       render 'edit'
     end
   end

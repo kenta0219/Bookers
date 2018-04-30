@@ -1,3 +1,11 @@
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>">
+            <div class="container">
+              <%= value %>
+            </div>
+          </div>
+        <% end %>
+
 <div class="body-wrap">
   <div id="st-container" class="st-container">
     <div class="st-pusher">
@@ -6,7 +14,6 @@
           <section class="slice slice-lg sct-color-1">
               <div class="container">
                   <div class="row">
-                      
                           <div class="form-user style-1 rounded has-shadow-1">
                             <div class="form-header text-left">
                                 <h2 class="form-header-title">User info</h2>
@@ -20,14 +27,22 @@
                                           <%= f.attachment_field :profile_image, placeholder: "プロフィール画像",class: "user_edit_form" %>
                                         <label class="control-introduction">Introduction</label>
                                           <%= f.text_area :introduction %>
-                                     </div>
+                                          <% if @user.errors.any? %>
+                                              <div id="error_explanation" class="alert alert-danger">
+                                                <ul>
+                                                  <% @user.errors.full_messages.each do |message| %>
+                                                    <li><%= message %></li>
+                                                  <% end %>
+                                                </ul>
+                                              </div>
+                                            <% end %>
+                                         </div>
                                      <div class="container row">
                                         <%= f.submit "Update User"%>
                                      </div>
                                 <% end %>
                               </div>
-                          </div> 
-                      
+                          </div>
                   </div>
               </div>
           </section>

@@ -8,5 +8,5 @@ Rails.application.routes.draw do
    root 'books#index'
    get 'users/:id' => 'users#show'
    get '/about' => 'books#about'
-  # get '/users/log_out' => 'devise/sessions#destroy'
+  
   end
